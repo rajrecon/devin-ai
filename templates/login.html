@@ -1,5 +1,15 @@
 <h1>Login</h1>
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <p style="color: {{ 'green' if category == 'success' else 'red' }};">
+        {{ message }}
+      </p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <form method="POST" action="/login">
   <input name="email" placeholder="Email">
   <br><br>
@@ -15,3 +25,6 @@
     Login
   </button>
 </form>
+
+<br>
+<a href="/forgot-password">Forgot Password?</a>
